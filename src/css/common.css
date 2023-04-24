@@ -12,7 +12,38 @@ body {
   line-height: 1.5;
 }
 
+.color-switcher {
+  background-color: #c9c9c9;
+}
+
+ul {
+  list-style: none;
+}
+
+.color-switcher__buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  padding: 250px 0;
+}
+
 img {
   display: block;
   max-width: 100%;
+}
+
+
+button {
+  border: 1px solid transparent;
+  border-radius: 4px;
+
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.88;
+  letter-spacing: 0.06em;
+
+  cursor: pointer;
+  text-align: center;
+  padding: 5px 15px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
