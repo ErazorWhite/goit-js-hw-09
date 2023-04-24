@@ -3,8 +3,6 @@ import flatpickr from 'flatpickr';
 // Дополнительный импорт стилей
 import 'flatpickr/dist/flatpickr.min.css';
 import Notiflix from 'notiflix';
-// Notiflix
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const startEl = document.querySelector('[data-start]');
 startEl.disabled = true;

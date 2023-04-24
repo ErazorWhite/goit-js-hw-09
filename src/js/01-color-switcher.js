@@ -1,3 +1,5 @@
+import Notiflix from 'notiflix';
+
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215)
     .toString(16)
@@ -17,8 +19,13 @@ function onStart() {
 }
 
 function onStop() {
-  startEl.disabled = false;
-  clearInterval(changeColorTimerId);
+  try {
+    if (!changeColorTimerId) return;
+    startEl.disabled = false;
+    clearInterval(changeColorTimerId);
+  } catch (error) {
+    Notiflix.Notify.failure('Press "Start" button first!');
+  }
 }
 
 startEl.addEventListener('click', onStart);
