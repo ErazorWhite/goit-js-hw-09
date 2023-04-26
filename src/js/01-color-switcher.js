@@ -1,4 +1,4 @@
-import Notiflix from 'notiflix';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215)
@@ -8,6 +8,7 @@ function getRandomHexColor() {
 
 const startEl = document.querySelector('[data-start]');
 const stopEl = document.querySelector('[data-stop]');
+let changeColorTimerId = null;
 
 function onStart() {
   startEl.disabled = true;
@@ -19,13 +20,12 @@ function onStart() {
 }
 
 function onStop() {
-  try {
-    if (!changeColorTimerId) return;
-    startEl.disabled = false;
-    clearInterval(changeColorTimerId);
-  } catch (error) {
-    Notiflix.Notify.failure('Press "Start" button first!');
+  if (!startEl.disabled || !changeColorTimerId) {
+    Notify.failure('Press "Start" button first!');
+    return;
   }
+  startEl.disabled = false;
+  clearInterval(changeColorTimerId);
 }
 
 startEl.addEventListener('click', onStart);

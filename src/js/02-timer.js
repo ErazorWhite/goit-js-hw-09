@@ -2,7 +2,8 @@
 import flatpickr from 'flatpickr';
 // Дополнительный импорт стилей
 import 'flatpickr/dist/flatpickr.min.css';
-import Notiflix from 'notiflix';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 
 const startEl = document.querySelector('[data-start]');
 startEl.disabled = true;
@@ -26,7 +27,7 @@ const options = {
     if (selectedDates[0] < Date.now()) {
       // Выбрали прошлое время
       startEl.disabled = true;
-      Notiflix.Notify.failure('Please choose a date in the future');
+      Notify.failure('Please choose a date in the future');
       return;
     } else {
       // Выбрали будущее время
@@ -48,7 +49,7 @@ function onStart() {
       timerUpdate(convertMs(remainingTime)); // Обновляем таймер до тех пор пока время не вышло
     } else {
       clearInterval(timerId); // Время вышло
-      Notiflix.Notify.info('Time is gone!');
+      Notify.info('Time is gone!');
     }
   }, 1000);
 }
